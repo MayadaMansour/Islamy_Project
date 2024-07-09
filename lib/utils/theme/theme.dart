@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
+
 import '../color_resource/color_resources.dart';
 
 class MyThemeData{
   static final ThemeData lightMode = ThemeData(
     primaryColor:ColorResources.primaryLightColor ,
     scaffoldBackgroundColor: Colors.transparent,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
-
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-     selectedItemColor: ColorResources.blackText
-    ),
+        selectedItemColor: ColorResources.blackText),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(
-        color: ColorResources.blackText,
-        fontWeight: FontWeight.bold,
-        fontSize: 30,
-      )
-    )
-
+        bodyLarge: TextStyle(
+            color: ColorResources.blackText,
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+            fontFamily: "ElMessiri")),
   );
 
 }

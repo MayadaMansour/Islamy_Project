@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../utils/color_resource/color_resources.dart';
 import '../home/home_screen.dart';
 
 class BoardScreen extends StatefulWidget {

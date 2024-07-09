@@ -6,16 +6,20 @@ import 'package:islamy/ui/home/sebha_page/sebha.dart';
 import '../../utils/color_resource/color_resources.dart';
 import 'hadeth_page/hadeth.dart';
 
-
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int selectedIndex =0;
-  List<Widget> tabs=[
-    QuranScreen(),HadethScreen(),SebhaScreen(),RadioScreen()
+  int selectedIndex = 3;
+  List<Widget> tabs = [
+    const RadioScreen(),
+    const SebhaScreen(),
+    const HadethScreen(),
+    const QuranScreen(),
   ];
 
   @override
@@ -32,37 +36,35 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: AppBar(
             centerTitle: true,
             title: Text(
-              "Islamy",
+              "إسلامي",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
           bottomNavigationBar: Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: ColorResources.primaryLightColor
-            ),
+            data: Theme.of(context)
+                .copyWith(canvasColor: ColorResources.primaryLightColor),
             child: BottomNavigationBar(
-
               currentIndex: selectedIndex,
-              onTap: (index){
+              onTap: (index) {
                 setState(() {
-                  selectedIndex=index;
+                  selectedIndex = index;
                 });
               },
-              items: [
-                BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage("assets/images/icon_quran.png")),
-                    label: "Quran"),
-                BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
-                    label: "Hadeth"),
-                BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage("assets/images/icon_sebha.png")),
-                    label: "Sebha"),
+              items: const [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),
-                    label: "Radio")
+                    label: "راديو"),
+                BottomNavigationBarItem(
+                    icon: ImageIcon(AssetImage("assets/images/icon_sebha.png")),
+                    label: "سبحه"),
+                BottomNavigationBarItem(
+                    icon:
+                        ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
+                    label: "حديث"),
+                BottomNavigationBarItem(
+                    icon: ImageIcon(AssetImage("assets/images/icon_quran.png")),
+                    label: "قرأن"),
               ],
-
             ),
           ),
           body: tabs[selectedIndex],
