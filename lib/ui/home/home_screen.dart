@@ -53,17 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
               items: const [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),
-                    label: "راديو"),
+                    label: "الراديو"),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("assets/images/icon_sebha.png")),
-                    label: "سبحه"),
+                    label: "السبحه"),
                 BottomNavigationBarItem(
                     icon:
                         ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
-                    label: "حديث"),
+                    label: "الحديث"),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage("assets/images/icon_quran.png")),
-                    label: "قرأن"),
+                    label: "القرأن"),
               ],
             ),
           ),
