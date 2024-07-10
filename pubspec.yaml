@@ -25,6 +25,7 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - assets/files/
 
   fonts:
     - family: ElMessiri
@@ -34,3 +35,11 @@ flutter:
     - family: Flat
       fonts:
         - asset: assets/fonts/JF Flat regular.otf
+
+    - family: DTHULUTH
+      fonts:
+        - asset: assets/fonts/DTHULUTH.TTF
+
+    - family: KOUFIBD
+      fonts:
+        - asset: assets/fonts/KOUFIBD.TTF

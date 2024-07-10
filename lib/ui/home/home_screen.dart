@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const RadioScreen(),
     const SebhaScreen(),
     const HadethScreen(),
-    const QuranScreen(),
+    QuranScreen(),
   ];
 
   @override
