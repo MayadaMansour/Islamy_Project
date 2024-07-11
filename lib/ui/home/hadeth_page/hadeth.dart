@@ -16,19 +16,19 @@ class _HadethScreenState extends State<HadethScreen> {
   List<HadethData> verses = [];
 
   @override
+  void initState() {
+    super.initState();
+    loadFile();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (verses.isEmpty) {
-      loadFile();
-    }
     return Column(
       children: [
         Expanded(
           child: Image.asset(
             "assets/images/hadeth_logo.png",
           ),
-        ),
-        const SizedBox(
-          height: 10,
         ),
         Divider(
           color: ColorResources.primaryLightColor,
@@ -43,29 +43,27 @@ class _HadethScreenState extends State<HadethScreen> {
           thickness: 3,
         ),
         Expanded(
-          flex: 3,
+          flex: 2,
           child: verses.isEmpty
               ? Center(
                   child: CircularProgressIndicator(
                     color: ColorResources.primaryLightColor,
                   ),
                 )
-              : Expanded(
-                  child: ListView.separated(
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (BuildContext context, int index) {
-                      return HadethTextName(
-                        data: verses[index],
-                      );
-                    },
-                    itemCount: verses.length,
-                    separatorBuilder: (BuildContext context, int index) {
-                      return Divider(
-                        color: ColorResources.primaryLightColor,
-                        thickness: 1,
-                      );
-                    },
-                  ),
+              : ListView.separated(
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (BuildContext context, int index) {
+                    return HadethTextName(
+                      data: verses[index],
+                    );
+                  },
+                  itemCount: verses.length,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return Divider(
+                      color: ColorResources.primaryLightColor,
+                      thickness: 1,
+                    );
+                  },
                 ),
         )
       ],
