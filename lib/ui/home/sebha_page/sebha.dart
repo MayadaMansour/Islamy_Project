@@ -14,12 +14,21 @@ class _SebhaScreenState extends State<SebhaScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String tasbeehText;
+    if (count < 33) {
+      tasbeehText = "سبحان الله";
+    } else if (count < 66) {
+      tasbeehText = "الحمد لله";
+    } else {
+      tasbeehText = "الله أكبر";
+    }
+
     return Center(
       child: Column(
         children: [
           SizedBox(
-            height: 350, // Set the height according to your needs
-            width: double.infinity, // Set width according to your needs
+            height: 350,
+            width: double.infinity,
             child: Stack(
               alignment: Alignment.topCenter,
               children: [
@@ -42,8 +51,15 @@ class _SebhaScreenState extends State<SebhaScreen> {
               ],
             ),
           ),
-          SizedBox(
-            height: 40,
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            "عدد التسبيحات",
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const SizedBox(
+            height: 10,
           ),
           ElevatedButton(
             onPressed: () {
@@ -55,7 +71,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
             style: ElevatedButton.styleFrom(
               backgroundColor:
                   ColorResources.primaryLightColor.withOpacity(0.4),
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             ),
             child: Text(
               "$count",
@@ -66,17 +82,17 @@ class _SebhaScreenState extends State<SebhaScreen> {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
               backgroundColor: ColorResources.primaryLightColor,
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             ),
             child: Text(
-              "سبحان الله",
+              tasbeehText,
               style: TextStyle(
                 fontFamily: "Flat",
                 fontSize: 22,

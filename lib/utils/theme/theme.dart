@@ -21,11 +21,22 @@ class MyThemeData{
       unselectedIconTheme: const IconThemeData(size: 32),
     ),
     textTheme: TextTheme(
-        bodyLarge: TextStyle(
-            color: ColorResources.blackText,
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-            fontFamily: "ElMessiri")),
+      bodyLarge: TextStyle(
+          color: ColorResources.blackText,
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+          fontFamily: "ElMessiri"),
+      bodyMedium: TextStyle(
+          color: ColorResources.blackText,
+          fontWeight: FontWeight.w700,
+          fontSize: 22,
+          fontFamily: "Flat"),
+      bodySmall: TextStyle(
+          color: ColorResources.blackText,
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+          fontFamily: "Flat"),
+    ),
   );
 
 }

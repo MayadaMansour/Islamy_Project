@@ -9,6 +9,8 @@ import 'hadeth_page/hadeth.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  static const String routeName = "Home_screen";
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

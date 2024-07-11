@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/ui/board/board_screen.dart';
+import 'package:islamy/ui/home/hadeth_page/hadeth_details_screen.dart';
+import 'package:islamy/ui/home/home_screen.dart';
+import 'package:islamy/ui/home/quran_page/sura_details_screen.dart';
 import 'package:islamy/utils/theme/theme.dart';
 
 void main() {
@@ -18,7 +21,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: MyThemeData.lightMode,
-        home: const BoardScreen(),
+        initialRoute: SplashScreen.routeName,
+        routes: {
+          SplashScreen.routeName: (context) => SplashScreen(),
+          HomeScreen.routeName: (context) => HomeScreen(),
+          SuraDetailsScreen.routeName: (context) => SuraDetailsScreen(),
+          HadethDetailsScreen.routeName: (context) => HadethDetailsScreen(),
+        },
+        home: const SplashScreen(),
       ),
     );
   }

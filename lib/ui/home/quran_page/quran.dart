@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/utils/color_resource/color_resources.dart';
 
+import 'item_sura_text.dart';
+
 class QuranScreen extends StatelessWidget {
   QuranScreen({super.key});
 
@@ -239,57 +241,58 @@ class QuranScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Image.asset(
+    return Column(
+      children: [
+        Expanded(
+          child: Image.asset(
             "assets/images/qur2an_screen_logo.png",
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Divider(
-            color: ColorResources.primaryLightColor,
-            thickness: 3,
-          ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                "عدد الأيات",
-                style: TextStyle(fontFamily: "ElMessiri", fontSize: 25),
-              ),
-              Text(
-                "أسم السوره",
-                style: TextStyle(fontFamily: "ElMessiri", fontSize: 25),
-              ),
-            ],
-          ),
-          Divider(
-            color: ColorResources.primaryLightColor,
-            thickness: 3,
-          ),
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemBuilder: (BuildContext context, int index) => const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "608",
-                    style: TextStyle(fontFamily: "Flat", fontSize: 25),
-                  ),
-                  Text(
-                    "سوره البقرة",
-                    style: TextStyle(fontFamily: "Flat", fontSize: 22),
-                  ),
-                ],
-              ),
-              itemCount: 20,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Divider(
+          color: ColorResources.primaryLightColor,
+          thickness: 3,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(
+              "عدد الأيات",
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
+            Text(
+              "أسم السوره",
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ],
+        ),
+        Divider(
+          color: ColorResources.primaryLightColor,
+          thickness: 3,
+        ),
+        Expanded(
+          flex: 2,
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SuraTextName(
+                  suraName: versesNumber[index].toString(),
+                  index: index,
+                ),
+                SuraTextName(
+                  suraName: (suraNames[index]),
+                  index: index,
+                ),
+              ],
+            ),
+            itemCount: suraNames.length,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

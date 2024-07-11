@@ -10,33 +10,34 @@ class RadioScreen extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-            height: 80,
+            height: 100,
           ),
-          Image.asset(
-            "assets/images/radio_image.png",
+          Expanded(
+            child: Image.asset(
+              "assets/images/radio_image.png",
+            ),
           ),
-          const SizedBox(
-            height: 130,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.skip_previous,
-                    size: 50,
-                    color: ColorResources.primaryLightColor,
-                  )),
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.play_arrow,
-                      size: 50, color: ColorResources.primaryLightColor)),
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.skip_next,
-                      size: 50, color: ColorResources.primaryLightColor)),
-            ],
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.skip_previous,
+                      size: 50,
+                      color: ColorResources.primaryLightColor,
+                    )),
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.play_arrow,
+                        size: 50, color: ColorResources.primaryLightColor)),
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.skip_next,
+                        size: 50, color: ColorResources.primaryLightColor)),
+              ],
+            ),
           )
         ],
       ),

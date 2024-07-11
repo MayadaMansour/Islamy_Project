@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 
 import '../home/home_screen.dart';
 
-class BoardScreen extends StatefulWidget {
-  const BoardScreen({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  static const String routeName = "Splash_Screen";
 
   @override
   State<StatefulWidget> createState() {
-    return _BoardScreenState();
+    return _SplashScreenState();
   }
 }
 
-class _BoardScreenState extends State<BoardScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
