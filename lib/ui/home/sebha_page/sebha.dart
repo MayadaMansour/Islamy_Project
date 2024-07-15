@@ -12,17 +12,19 @@ class _SebhaScreenState extends State<SebhaScreen> {
   double turns = 0.0;
   int count = 0;
 
+  List<String> tasbeehPhrases = [
+    "سبحان الله",
+    "الحمد لله",
+    "الله أكبر",
+  ];
+
+  String get tasbeehText {
+    int index = (count ~/ 33) % 3;
+    return tasbeehPhrases[index];
+  }
+
   @override
   Widget build(BuildContext context) {
-    String tasbeehText;
-    if (count < 33) {
-      tasbeehText = "سبحان الله";
-    } else if (count < 66) {
-      tasbeehText = "الحمد لله";
-    } else {
-      tasbeehText = "الله أكبر";
-    }
-
     return Center(
       child: Column(
         children: [

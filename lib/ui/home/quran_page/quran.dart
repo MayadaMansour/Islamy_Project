@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamy/utils/color_resource/color_resources.dart';
 
 import 'item_sura_text.dart';
@@ -259,11 +260,11 @@ class QuranScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
-              "عدد الأيات",
+              AppLocalizations.of(context)!.suraName,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             Text(
-              "أسم السوره",
+              AppLocalizations.of(context)!.suraNumber,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ],
@@ -280,11 +281,11 @@ class QuranScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SuraTextName(
-                  suraName: versesNumber[index].toString(),
+                  suraName: (suraNames[index]),
                   index: index,
                 ),
                 SuraTextName(
-                  suraName: (suraNames[index]),
+                  suraName: versesNumber[index].toString(),
                   index: index,
                 ),
               ],

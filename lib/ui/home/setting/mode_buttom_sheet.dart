@@ -1,0 +1,75 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islamy/utils/color_resource/color_resources.dart';
+import 'package:provider/provider.dart';
+
+import '../../../core/provider/app_config_provider.dart';
+
+class ModeButtomSheet extends StatefulWidget {
+  const ModeButtomSheet({super.key});
+
+  @override
+  State<ModeButtomSheet> createState() => _ModeButtomSheetState();
+}
+
+class _ModeButtomSheetState extends State<ModeButtomSheet> {
+  @override
+  Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+    return Container(
+      height: 100,
+      margin: const EdgeInsets.all(25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          InkWell(
+              onTap: () {
+                provider.changeMode(ThemeMode.light);
+              },
+              child: provider.themeMode == ThemeMode.light
+                  ? getSelectedItemWidget(
+                      AppLocalizations.of(context)!.lightMode)
+                  : getUnSelectedItemWidget(
+                      AppLocalizations.of(context)!.lightMode)),
+          const SizedBox(
+            height: 15,
+          ),
+          InkWell(
+              onTap: () {
+                provider.changeMode(ThemeMode.dark);
+              },
+              child: provider.themeMode == ThemeMode.dark
+                  ? getSelectedItemWidget(
+                      AppLocalizations.of(context)!.darkMode)
+                  : getUnSelectedItemWidget(
+                      AppLocalizations.of(context)!.darkMode)),
+        ],
+      ),
+    );
+  }
+
+  Widget getSelectedItemWidget(String text) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(text,
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(color: ColorResources.primaryLightColor)),
+        Icon(
+          Icons.check,
+          size: 30,
+          color: ColorResources.primaryLightColor,
+        )
+      ],
+    );
+  }
+
+  Widget getUnSelectedItemWidget(String text) {
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.bodySmall,
+    );
+  }
+}
