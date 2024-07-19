@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamy/utils/color_resource/color_resources.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/provider/app_config_provider.dart';
 import 'item_sura_text.dart';
 
 class QuranScreen extends StatelessWidget {
@@ -242,6 +244,8 @@ class QuranScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Column(
       children: [
         Expanded(
@@ -253,7 +257,9 @@ class QuranScreen extends StatelessWidget {
           height: 10,
         ),
         Divider(
-          color: ColorResources.primaryLightColor,
+          color: provider.isDark()
+              ? ColorResources.yellowText
+              : ColorResources.primaryLightColor,
           thickness: 3,
         ),
         Row(
@@ -270,7 +276,9 @@ class QuranScreen extends StatelessWidget {
           ],
         ),
         Divider(
-          color: ColorResources.primaryLightColor,
+          color: provider.isDark()
+              ? ColorResources.yellowText
+              : ColorResources.primaryLightColor,
           thickness: 3,
         ),
         Expanded(

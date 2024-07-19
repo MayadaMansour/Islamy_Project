@@ -80,7 +80,9 @@ class _SettingScreenState extends State<SettingScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.lightMode,
+                    provider.isDark()
+                        ? AppLocalizations.of(context)!.darkMode
+                        : AppLocalizations.of(context)!.lightMode,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Icon(

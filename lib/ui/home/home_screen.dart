@@ -35,12 +35,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Stack(
       children: [
-        Image.asset(
-          "assets/images/default_bg.png",
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.fill,
-        ),
+        provider.isDark()
+            ? Image.asset(
+                "assets/images/dark_bg.png",
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+              )
+            : Image.asset(
+                "assets/images/default_bg.png",
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+              ),
         Scaffold(
           appBar: AppBar(
             centerTitle: true,
@@ -50,8 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           bottomNavigationBar: Theme(
-            data: Theme.of(context)
-                .copyWith(canvasColor: ColorResources.primaryLightColor),
+            data: provider.isDark()
+                ? Theme.of(context)
+                    .copyWith(canvasColor: ColorResources.primaryDarkColor)
+                : Theme.of(context)
+                    .copyWith(canvasColor: ColorResources.primaryLightColor),
             child: BottomNavigationBar(
               currentIndex: selectedIndex,
               onTap: (index) {

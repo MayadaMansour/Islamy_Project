@@ -47,3 +47,5 @@ flutter:
     - family: KOUFIBD
       fonts:
         - asset: assets/fonts/KOUFIBD.TTF
+flutter_intl:
+  enabled: true

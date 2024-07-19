@@ -17,33 +17,38 @@ class _ModeButtomSheetState extends State<ModeButtomSheet> {
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
     return Container(
-      height: 100,
-      margin: const EdgeInsets.all(25),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          InkWell(
-              onTap: () {
-                provider.changeMode(ThemeMode.light);
-              },
-              child: provider.themeMode == ThemeMode.light
-                  ? getSelectedItemWidget(
-                      AppLocalizations.of(context)!.lightMode)
-                  : getUnSelectedItemWidget(
-                      AppLocalizations.of(context)!.lightMode)),
-          const SizedBox(
-            height: 15,
-          ),
-          InkWell(
-              onTap: () {
-                provider.changeMode(ThemeMode.dark);
-              },
-              child: provider.themeMode == ThemeMode.dark
-                  ? getSelectedItemWidget(
-                      AppLocalizations.of(context)!.darkMode)
-                  : getUnSelectedItemWidget(
-                      AppLocalizations.of(context)!.darkMode)),
-        ],
+      height: 150,
+      color: provider.isDark()
+          ? ColorResources.primaryDarkColor
+          : ColorResources.white,
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            InkWell(
+                onTap: () {
+                  provider.changeMode(ThemeMode.light);
+                },
+                child: !(provider.isDark())
+                    ? getSelectedItemWidget(
+                        AppLocalizations.of(context)!.lightMode)
+                    : getUnSelectedItemWidget(
+                        AppLocalizations.of(context)!.lightMode)),
+            const SizedBox(
+              height: 15,
+            ),
+            InkWell(
+                onTap: () {
+                  provider.changeMode(ThemeMode.dark);
+                },
+                child: provider.isDark()
+                    ? getSelectedItemWidget(
+                        AppLocalizations.of(context)!.darkMode)
+                    : getUnSelectedItemWidget(
+                        AppLocalizations.of(context)!.darkMode)),
+          ],
+        ),
       ),
     );
   }

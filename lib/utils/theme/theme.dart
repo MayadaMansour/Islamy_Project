@@ -2,19 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../color_resource/color_resources.dart';
 
-class MyThemeData{
+class MyThemeData {
   static final ThemeData lightMode = ThemeData(
     primaryColor: ColorResources.primaryLightColor,
     scaffoldBackgroundColor: Colors.transparent,
-    // canvasColor: ColorResources.primaryLightColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: ColorResources.blackText,
-      // backgroundColor: ColorResources.primaryLightColor ,
-
       selectedLabelStyle: TextStyle(
           color: ColorResources.blackText,
           fontWeight: FontWeight.normal,
@@ -45,15 +42,14 @@ class MyThemeData{
   static final ThemeData darkMode = ThemeData(
     primaryColor: ColorResources.primaryDarkColor,
     scaffoldBackgroundColor: Colors.transparent,
-    // canvasColor: ColorResources.primaryDarkColor,
-
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-    ),
+    bottomSheetTheme:
+        BottomSheetThemeData(backgroundColor: ColorResources.primaryDarkColor),
+    appBarTheme: AppBarTheme(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(color: ColorResources.white)),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedItemColor: ColorResources.yellowText,
-      // backgroundColor: ColorResources.primaryDarkColor ,
       unselectedItemColor: ColorResources.white,
       selectedLabelStyle: TextStyle(
           color: ColorResources.yellowText,

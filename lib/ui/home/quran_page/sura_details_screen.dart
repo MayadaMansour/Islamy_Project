@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamy/ui/home/quran_page/sura_model.dart';
 import 'package:islamy/utils/color_resource/color_resources.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/provider/app_config_provider.dart';
 import 'item_sura_details.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
@@ -20,21 +23,30 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraData;
+    var provider = Provider.of<AppConfigProvider>(context);
+
     if (verses.isEmpty) {
       loadFile(args.index);
     }
     return Stack(children: [
-      Image.asset(
-        "assets/images/default_bg.png",
-        width: double.infinity,
-        height: double.infinity,
-        fit: BoxFit.fill,
-      ),
+      provider.isDark()
+          ? Image.asset(
+              "assets/images/dark_bg.png",
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            )
+          : Image.asset(
+              "assets/images/default_bg.png",
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
       Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            "إسلامي",
+            AppLocalizations.of(context)!.appTitle,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
@@ -54,13 +66,17 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                   ),
                   Icon(
                     Icons.play_circle_fill,
-                    color: ColorResources.primaryLightColor,
+                    color: provider.isDark()
+                        ? ColorResources.yellowText
+                        : ColorResources.primaryLightColor,
                   )
                 ],
               ),
             ),
             Container(
-              color: ColorResources.primaryLightColor,
+              color: provider.isDark()
+                  ? ColorResources.yellowText
+                  : ColorResources.primaryLightColor,
               width: 280,
               height: 1.5,
             ),
@@ -76,7 +92,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                           horizontal: MediaQuery.of(context).size.width * 0.05,
                           vertical: MediaQuery.of(context).size.height * 0.03),
                       decoration: BoxDecoration(
-                          color: ColorResources.white,
+                          color: provider.isDark()
+                              ? ColorResources.primaryDarkColor
+                              : ColorResources.white,
                           borderRadius: BorderRadius.circular(24)),
                       child: ListView.builder(
                         itemBuilder: (context, index) {

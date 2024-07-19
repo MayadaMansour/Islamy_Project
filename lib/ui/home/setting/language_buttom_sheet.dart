@@ -17,31 +17,38 @@ class _LanguageButtomSheetState extends State<LanguageButtomSheet> {
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
     return Container(
-      height: 100,
-      margin: const EdgeInsets.all(25),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          InkWell(
-              onTap: () {
-                provider.changeLanguage("en");
-              },
-              child: provider.appLanguage == "en"
-                  ? getSelectedItemWidget(AppLocalizations.of(context)!.english)
-                  : getUnSelectedItemWidget(
-                      AppLocalizations.of(context)!.english)),
-          const SizedBox(
-            height: 15,
-          ),
-          InkWell(
-              onTap: () {
-                provider.changeLanguage("ar");
-              },
-              child: provider.appLanguage == "ar"
-                  ? getSelectedItemWidget(AppLocalizations.of(context)!.arabic)
-                  : getUnSelectedItemWidget(
-                      AppLocalizations.of(context)!.arabic)),
-        ],
+      height: 150,
+      color: provider.isDark()
+          ? ColorResources.primaryDarkColor
+          : ColorResources.white,
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            InkWell(
+                onTap: () {
+                  provider.changeLanguage("en");
+                },
+                child: provider.appLanguage == "en"
+                    ? getSelectedItemWidget(
+                        AppLocalizations.of(context)!.english)
+                    : getUnSelectedItemWidget(
+                        AppLocalizations.of(context)!.english)),
+            const SizedBox(
+              height: 15,
+            ),
+            InkWell(
+                onTap: () {
+                  provider.changeLanguage("ar");
+                },
+                child: provider.appLanguage == "ar"
+                    ? getSelectedItemWidget(
+                        AppLocalizations.of(context)!.arabic)
+                    : getUnSelectedItemWidget(
+                        AppLocalizations.of(context)!.arabic)),
+          ],
+        ),
       ),
     );
   }

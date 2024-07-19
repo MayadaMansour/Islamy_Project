@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamy/ui/home/hadeth_page/hadeth_model.dart';
 import 'package:islamy/utils/color_resource/color_resources.dart';
+import 'package:provider/provider.dart';
 
+import '../../../core/provider/app_config_provider.dart';
 import 'item_hadeth_details.dart';
 
 class HadethDetailsScreen extends StatelessWidget {
@@ -11,20 +14,29 @@ class HadethDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     var args = ModalRoute.of(context)?.settings.arguments as HadethData;
 
     return Stack(children: [
-      Image.asset(
-        "assets/images/default_bg.png",
-        width: double.infinity,
-        height: double.infinity,
-        fit: BoxFit.fill,
-      ),
+      provider.isDark()
+          ? Image.asset(
+              "assets/images/dark_bg.png",
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            )
+          : Image.asset(
+              "assets/images/default_bg.png",
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.fill,
+            ),
       Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            "إسلامي",
+            AppLocalizations.of(context)!.appTitle,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
@@ -48,7 +60,9 @@ class HadethDetailsScreen extends StatelessWidget {
                     horizontal: MediaQuery.of(context).size.width * 0.05,
                     vertical: MediaQuery.of(context).size.height * 0.03),
                 decoration: BoxDecoration(
-                    color: ColorResources.white,
+                    color: provider.isDark()
+                        ? ColorResources.primaryDarkColor
+                        : ColorResources.white,
                     borderRadius: BorderRadius.circular(24)),
                 child: ListView.builder(
                   itemBuilder: (context, index) {
